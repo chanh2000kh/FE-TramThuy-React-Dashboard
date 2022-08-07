@@ -1,7 +1,10 @@
 import { faker } from '@faker-js/faker';
+import { useNavigate } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
+import { useState, useEffect } from 'react';
+import callApi from '../api/ApiSevice';
 // components
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
@@ -21,8 +24,17 @@ import {
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-  const theme = useTheme();
+  const navigate = useNavigate();
 
+  const theme = useTheme();
+  useEffect(() => {
+    if (localStorage.getItem('accessToken') === "") navigate('/login');
+    // callApi(`api/cart/getCartHaventToken`, 'POST')
+    //   .then((res) => {})
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }, []);
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">

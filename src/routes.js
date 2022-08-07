@@ -9,8 +9,18 @@ import Login from './pages/Login';
 import NotFound from './pages/Page404';
 import Register from './pages/Register';
 import Products from './pages/Products';
+import ProductTramThuy from './pages/ProductTramThuy'
+import Comment from './pages/Comment'
+import Describe from './pages/Describe'
+import DescribeEdit from './pages/DescribeEdit'
 import DashboardApp from './pages/DashboardApp';
-
+import ProductTramThuyAdd from './pages/ProductTramThuyAdd';
+import ProductTramThuyEdit from './pages/ProductTramThuyEdit';
+import Knowledge from './pages/Knowledge';
+import KnowledgeAdd from './pages/KnowledgeAdd';
+import KnowledgeEdit from './pages/KnowledgeEdit';
+import Bill from './pages/Bill';
+import BillDetail from './pages/BillDetail';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -21,8 +31,19 @@ export default function Router() {
       children: [
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
-        { path: 'products', element: <Products /> },
+        // { path: 'products', element: <Products /> },
+        { path: 'products', element: <ProductTramThuy /> },
         { path: 'blog', element: <Blog /> },
+        { path: 'comment', element: <Comment /> },
+        { path: 'describe', element: <Describe /> },
+        { path: 'describeedit', element: <DescribeEdit /> },
+        { path: 'producttramthuyadd', element: <ProductTramThuyAdd /> },
+        { path: 'producttramthuyedit', element: <ProductTramThuyEdit /> },
+        { path: 'knowledge', element: <Knowledge /> },
+        { path: 'knowledgeadd', element: <KnowledgeAdd /> },
+        { path: 'knowledgeedit', element: <KnowledgeEdit /> },
+        { path: 'bill', element: <Bill /> },
+        { path: 'billdetail', element: <BillDetail /> },
       ],
     },
     {
