@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Typography, CardHeader, CardContent } from '@mui/material';
 import { Timeline, TimelineDot, TimelineItem, TimelineContent, TimelineSeparator, TimelineConnector } from '@mui/lab';
 // utils
-import { fDateTime } from '../../../utils/formatTime';
-
+import { fDateTime, fToNow } from '../../../utils/formatTime';
 // ----------------------------------------------------------------------
 
 AppOrderTimeline.propTypes = {
@@ -27,7 +26,7 @@ export default function AppOrderTimeline({ title, subheader, list, ...other }) {
       >
         <Timeline>
           {list.map((item, index) => (
-            <OrderItem key={item.id} item={item} isLast={index === list.length - 1} />
+            <OrderItem key={item._id} item={item} isLast={index === list.length - 1} />
           ))}
         </Timeline>
       </CardContent>
@@ -40,34 +39,27 @@ export default function AppOrderTimeline({ title, subheader, list, ...other }) {
 OrderItem.propTypes = {
   isLast: PropTypes.bool,
   item: PropTypes.shape({
-    time: PropTypes.instanceOf(Date),
-    title: PropTypes.string,
+    createdAt: PropTypes.instanceOf(Date),
+    name: PropTypes.string,
     type: PropTypes.string,
   }),
 };
 
 function OrderItem({ item, isLast }) {
-  const { type, title, time } = item;
+  const { name, createdAt, verify, email, writeReview } = item;
   return (
     <TimelineItem>
       <TimelineSeparator>
-        <TimelineDot
-          color={
-            (type === 'order1' && 'primary') ||
-            (type === 'order2' && 'success') ||
-            (type === 'order3' && 'info') ||
-            (type === 'order4' && 'warning') ||
-            'error'
-          }
-        />
+        <TimelineDot color={(verify === 1 && 'success') || (verify === 0 && 'warning') || 'error'} />
         {isLast ? null : <TimelineConnector />}
       </TimelineSeparator>
 
       <TimelineContent>
-        <Typography variant="subtitle2">{title}</Typography>
+        <Typography variant="subtitle2">{name} ({email}):</Typography>
+        <CardHeader subheader={writeReview} />
 
         <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-          {fDateTime(time)}
+          {fToNow(createdAt)}
         </Typography>
       </TimelineContent>
     </TimelineItem>

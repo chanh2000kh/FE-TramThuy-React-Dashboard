@@ -31,6 +31,8 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashbo
 // mock
 import USERLIST from '../_mock/user';
 import callApi from '../api/ApiSevice';
+// utils
+import { fDateTime, fToNow } from '../utils/formatTime';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
@@ -207,7 +209,7 @@ export default function Comment() {
                         <TableCell align="left">{row.writeReview}</TableCell>
                         <TableCell align="left">{row.star}</TableCell>
                         <TableCell align="left">{row.email}</TableCell>
-                        <TableCell align="left">{formatDate(row.createdAt)}</TableCell>
+                        <TableCell align="left">{fDateTime(row.createdAt)}</TableCell>
                         <TableCell align="right">
                           <CommentMoreMenu id={_id} />
                         </TableCell>

@@ -36,6 +36,8 @@ import FormatPrice from '../sevices/FormatPrice';
 // mock
 import USERLIST from '../_mock/user';
 import callApi from '../api/ApiSevice';
+// utils
+import { fDateTime, fToNow } from '../utils/formatTime';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
@@ -241,7 +243,7 @@ export default function ProductTramThuy() {
                             {(row.payOnline === false && sentenceCase('COD')) || sentenceCase('Online')}
                           </Label>
                         </TableCell>
-                        <TableCell align="left">{formatDate(row.createdAt)}</TableCell>
+                        <TableCell align="left">{fDateTime(row.createdAt)}</TableCell>
                         <TableCell align="right">
                           <BillMoreMenu id={_id}/>
                         </TableCell >

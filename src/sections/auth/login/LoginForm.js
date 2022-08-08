@@ -18,6 +18,10 @@ import { FormProvider, RHFTextField, RHFCheckbox } from '../../../components/hoo
 export default function LoginForm() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    localStorage.setItem("accessToken", "");
+  }, []);
+
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
